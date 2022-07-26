@@ -1,0 +1,57 @@
+### 
+GET http://localhost:3001
+###
+### users
+
+GET http://localhost:3001/users
+###
+### register
+POST http://localhost:3001/register
+Content-Type: application/json
+
+{    
+    "username": "joany",
+    "email": "joan@joan.com",
+    "password": "123456"
+    }
+###
+### login
+POST http://localhost:3001/login
+Content-Type: application/json
+
+{    
+    "username": "joany",
+    "email": "joan@joan.com",
+    "password": "123456"
+    }
+
+###    
+### QUESTIONS
+POST http://localhost:3001/questions 
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg4Mjk4MzksImV4cCI6MTY1ODgzNzAzOX0.JMpKosfn_n1hGDrS3V_ZKm5grfbKJw3FVVETNfL7td0
+
+{
+"q_title": "Feeding puppy", 
+"question": "How many times a day should I feed puppy",
+"user_id": "2"
+}
+###
+###
+GET http://localhost:3001/questions 
+
+### ANSWERS
+###
+POST http://localhost:3001/answers 
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImlhdCI6MTY1MzY0NDU1MiwiZXhwIjoxNjUzNjUxNzUyfQ.saWN9Y5YSh9wVJ2cZwwL8UU9Z0jkRdpkrqLiNkIaGaM
+
+{
+"group_id": "3", 
+"user_id": "7"
+}
+###
+###
+GET http://localhost:3001/answers 
+
+
