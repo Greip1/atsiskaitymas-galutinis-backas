@@ -27,14 +27,26 @@ Content-Type: application/json
 
 ###    
 ### QUESTIONS
+
 POST http://localhost:3001/questions 
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg4Mjk4MzksImV4cCI6MTY1ODgzNzAzOX0.JMpKosfn_n1hGDrS3V_ZKm5grfbKJw3FVVETNfL7td0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg4NTQ1MjEsImV4cCI6MTY1ODg2MTcyMX0.Cn2yyIdbNgk2C4TYHQFjFV0BTvvkzuMC8ODJq07jx9E
 
 {
-"q_title": "Feeding puppy", 
-"question": "How many times a day should I feed puppy",
-"user_id": "2"
+"q_title": "Feeding cow", 
+"question": "How many times to feed a cow",
+"user_id": 2
+}
+
+
+###
+###
+PATCH http://localhost:3001/questions/2
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg4NTQ1MjEsImV4cCI6MTY1ODg2MTcyMX0.Cn2yyIdbNgk2C4TYHQFjFV0BTvvkzuMC8ODJq07jx9E
+
+{
+"question": "How many times a day should I feed puppy nfjgkllkjhjgjg"
 }
 ###
 ###
