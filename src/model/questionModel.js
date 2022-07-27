@@ -17,13 +17,13 @@ function editQuestionDb(question, q_id) {
   return executeDb(sql, [question]);
 }
 
-function deleteQuestion() {
-  const sql = '';
+function deleteQuestionDb(q_id) {
+  const sql = `UPDATE klausimai SET archivedQ = 1 WHERE klausimai.q_id = ${q_id}`;
   return executeDb(sql, []);
 }
 module.exports = {
   getAllQuestionsDb,
   postQuestionDb,
   editQuestionDb,
-  deleteQuestion,
+  deleteQuestionDb,
 };

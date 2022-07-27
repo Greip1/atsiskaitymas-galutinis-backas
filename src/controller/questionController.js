@@ -3,6 +3,7 @@ const {
   getAllQuestionsDb,
   postQuestionDb,
   editQuestionDb,
+  deleteQuestionDb,
 } = require('../model/questionModel');
 
 // ------------------------------------------
@@ -35,8 +36,6 @@ async function postQuestion(req, res) {
 async function editQuestion(req, res) {
   const { question } = req.body;
   const { q_id } = req.params;
-  console.log('q_id', q_id);
-  console.log('req.body', req.body);
 
   try {
     const saveResult = await editQuestionDb(question, q_id);
@@ -51,9 +50,26 @@ async function editQuestion(req, res) {
     res.sendStatus(500);
   }
 }
+async function deleteQuestion(req, res) {
+  const { q_id } = req.params;
+
+  try {
+    const saveResult = await deleteQuestionDb(q_id);
+    if (saveResult.affectedRows === 1) {
+      res.status(201).json('Question successfully archived');
+      return;
+    }
+    res.status(400).json('Error in archiving Question ');
+  } catch (error) {
+    console.log('patch /Question ===', error);
+
+    res.sendStatus(500);
+  }
+}
 
 module.exports = {
   getAllQuestions,
   postQuestion,
   editQuestion,
+  deleteQuestion,
 };
