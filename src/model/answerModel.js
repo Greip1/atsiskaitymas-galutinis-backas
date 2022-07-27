@@ -13,7 +13,7 @@ function postAnswerDb(q_id, answer, user_id) {
 }
 
 function editAnswerDb(answer, a_id) {
-  const sql = `UPDATE atsakymai SET answer = (?) WHERE atsakymai.a_id = ${a_id} `;
+  const sql = `UPDATE atsakymai SET answer = (?), isEditedA = 1 WHERE atsakymai.a_id = ${a_id} `;
   return executeDb(sql, [answer]);
 }
 
