@@ -1,9 +1,18 @@
+/* eslint-disable max-len */
 /* eslint-disable camelcase */
 const { executeDb } = require('../utils/helper');
 
+// AND SELECT question FROM klausimai WHERE klausimai.q_id = ${q_id}
+// `SELECT * FROM atsakymai AND klausimai LEFT JOIN atsakymai ON atsakymai.q_id = klausimai.q_id WHERE atsakymai.q_id = ${q_id} ORDER BY  klausimai.q_id`
+
 // --------------------------
 function getAllAnswersDb(q_id) {
-  const sql = `SELECT * FROM atsakymai WHERE atsakymai.q_id = ${q_id}`;
+  const sql = `SELECT * FROM atsakymai JOIN klausimai ON klausimai.q_id = atsakymai.q_id WHERE atsakymai.q_id = ${q_id} `;
+  return executeDb(sql, []);
+}
+
+function getUserAnswersDb(user_id) {
+  const sql = `SELECT * FROM atsakymai WHERE archivedA = 0 AND user_id = ${user_id} `;
   return executeDb(sql, []);
 }
 
@@ -26,4 +35,5 @@ module.exports = {
   postAnswerDb,
   editAnswerDb,
   deleteAnswerDb,
+  getUserAnswersDb,
 };

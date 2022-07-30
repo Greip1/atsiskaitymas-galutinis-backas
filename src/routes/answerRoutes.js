@@ -5,11 +5,14 @@ const {
   postAnswer,
   editAnswer,
   deleteAnswer,
-} = require('../controller/AnswerController');
+  getUserAnswers,
+} = require('../controller/answerController');
 
 const answerRoute = express.Router();
 
 answerRoute.get('/questions/:q_id/answers', getAllAnswers);
+
+answerRoute.get('/answers/user/:user_id', getUserAnswers);
 
 answerRoute.post('/questions/:q_id/answers', validateToken, postAnswer);
 

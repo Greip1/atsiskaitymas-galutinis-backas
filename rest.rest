@@ -10,8 +10,8 @@ POST http://localhost:3001/register
 Content-Type: application/json
 
 {    
-    "username": "joany",
-    "email": "joan@joan.com",
+    "username": "sammmyy",
+    "email": "sam@sam.com",
     "password": "123456"
     }
 ###
@@ -39,12 +39,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg4NTQ1M
 }
 
 ###
-PATCH http://localhost:3001/questions/5
+PATCH http://localhost:3001/questions/1
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg4NTQ1MjEsImV4cCI6MTY1ODg2MTcyMX0.Cn2yyIdbNgk2C4TYHQFjFV0BTvvkzuMC8ODJq07jx9E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTkyMDMwNDksImV4cCI6MTY1OTIxMDI0OX0.13L7f8tyHQDjlu5R8gFjNK6PCayHPCEuwaO0b48M8Bw
 
 {
-"question": "this is not a cow no more"
+"question": "Puppy bathing ed"
 }
 
 
@@ -56,6 +56,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg4NTQ1M
 
 ###
 GET http://localhost:3001/questions 
+###
+GET http://localhost:3001/questions/1
+###
+GET http://localhost:3001/questions/user/2
 
 ### ANSWERS
 ###
@@ -71,6 +75,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MTU2N
 ###
 ###
 GET http://localhost:3001/questions/1/answers
+
+
+###
+GET http://localhost:3001/answers/user/2
 
 
 ###

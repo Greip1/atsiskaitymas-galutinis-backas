@@ -3,7 +3,6 @@ const Joi = require('joi');
 const jwt = require('jsonwebtoken');
 const { jwtSecret } = require('./config');
 
-// ------------------------------------------------------
 async function validateUser(req, res, next) {
   const schema = Joi.object({
     username: Joi.string().trim().min(5).required(),
@@ -19,7 +18,6 @@ async function validateUser(req, res, next) {
     res.status(400).json(error.details);
   }
 }
-// --------------------------------------------------------
 async function validateToken(req, res, next) {
   const tokenFromHeaders = req.headers.authorization?.split(' ')[1];
 
@@ -32,22 +30,16 @@ async function validateToken(req, res, next) {
   }
   try {
     const tokenPayload = jwt.verify(tokenFromHeaders, jwtSecret);
-    // console.log('tokenPayload', tokenPayload);
-    // console.log('tokenPayload.userId====', tokenPayload.userId);
     const userIdFromReq = tokenPayload.userId;
-    // budas perduoti userId i tolimesne funkcija
     req.userId = userIdFromReq;
-    // console.log('userIdFromReq', userIdFromReq);
     next();
   } catch (error) {
-    // console.log(error);
     res.status(403).json({
       success: false,
       error: 'blogas tokenas',
     });
   }
 }
-// ---------------------------------------------------------
 module.exports = {
   validateUser,
   validateToken,

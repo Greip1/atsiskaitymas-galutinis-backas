@@ -7,7 +7,6 @@ const { PORT } = require('./config');
 const userRoute = require('./routes/userRoutes');
 const questionRoute = require('./routes/questionRoutes');
 const answerRoute = require('./routes/answerRoutes');
-// const groupsRoute = require('./routes/groupRoutes');
 
 const app = express();
 
@@ -19,7 +18,6 @@ app.use(cors());
 app.use('/', userRoute);
 app.use('/', questionRoute);
 app.use('/', answerRoute);
-// app.use('/', groupsRoute);
 
 // routes
 app.get('/', (req, res) => {

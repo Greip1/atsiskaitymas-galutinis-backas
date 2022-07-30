@@ -5,11 +5,17 @@ const {
   postQuestion,
   editQuestion,
   deleteQuestion,
+  getOneQuestion,
+  getUserQuestions,
 } = require('../controller/questionController');
 
 const questionRoute = express.Router();
 
 questionRoute.get('/questions', getAllQuestions);
+
+questionRoute.get('/questions/:q_id', getOneQuestion);
+
+questionRoute.get('/questions/user/:user_id', getUserQuestions);
 
 questionRoute.post('/questions', validateToken, postQuestion);
 

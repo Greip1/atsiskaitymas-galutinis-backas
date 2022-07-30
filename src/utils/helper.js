@@ -11,22 +11,19 @@ async function executeDb(sql, dataToDBArr = []) {
     const [result] = await conn.execute(sql, dataToDBArr);
     return result;
   } catch (error) {
-    console.log('Error in executeDb!!', error);
-    throw new Error('Error in executeDb!!');
+    throw new Error('Error in executeDb!!', error);
   } finally {
     conn?.end();
   }
 }
-// =======================================
+
 function hashPassword(password) {
   return bcrypt.hashSync(password, 10);
 }
-// =======================================
 
 function passwordsMatch(givenPassword, hashedStored) {
   return bcrypt.compareSync(givenPassword, hashedStored);
 }
-// =======================================
 
 function generateToken(payload) {
   const jwtSecret = process.env.JWT_SECRET;
