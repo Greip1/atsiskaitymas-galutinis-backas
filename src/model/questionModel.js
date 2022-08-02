@@ -25,9 +25,23 @@ function editQuestionDb(question, q_id) {
 }
 
 function deleteQuestionDb(q_id) {
-  const sql = `UPDATE klausimai SET archivedQ = 1 WHERE klausimai.q_id = ${q_id}`;
+  const sql = `UPDATE klausimai SET klausimai.archivedQ = 1 WHERE klausimai.q_id = ${q_id} `;
   return executeDb(sql, []);
 }
+
+function addLikeDb(q_id) {
+  const sql = `UPDATE klausimai SET klausimai.q_likes = q_likes+1 WHERE  klausimai.q_id = ${q_id}`;
+  console.log('sql', sql);
+
+  return executeDb(sql, []);
+}
+function minusLikeDb(q_id) {
+  const sql = `UPDATE klausimai SET klausimai.q_likes = q_likes-1 WHERE  klausimai.q_id = ${q_id}`;
+  console.log('sql', sql);
+
+  return executeDb(sql, []);
+}
+
 module.exports = {
   getAllQuestionsDb,
   getOneQuestionDb,
@@ -35,4 +49,6 @@ module.exports = {
   editQuestionDb,
   deleteQuestionDb,
   getUserQuestionsDb,
+  addLikeDb,
+  minusLikeDb,
 };

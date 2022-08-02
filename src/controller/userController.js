@@ -39,11 +39,11 @@ async function loginUser(req, res) {
   const foundUserArr = await findUserByEmail(gotEmail);
   const foundUser = foundUserArr[0];
   if (!foundUser) {
-    res.status(400).json('This email or password was not found');
+    res.status(400).json({ err: 'This email or password was not found' });
     return;
   }
   if (!passwordsMatch(gotPassword, foundUser.password)) {
-    res.status(400).json('This email or password was not found');
+    res.status(400).json({ err: 'This email or password was not found' });
     return;
   }
   const payload = { userId: foundUser.id };

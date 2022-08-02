@@ -6,6 +6,8 @@ const {
   deleteQuestionDb,
   getOneQuestionDb,
   getUserQuestionsDb,
+  addLikeDb,
+  minusLikeDb,
 } = require('../model/questionModel');
 
 async function getOneQuestion(req, res) {
@@ -71,11 +73,39 @@ async function deleteQuestion(req, res) {
 
   try {
     const saveResult = await deleteQuestionDb(q_id);
+    console.log('saveResult', saveResult);
     if (saveResult.affectedRows === 1) {
       res.status(201).json({ succes: 'Question successfully deleted' });
       return;
     }
     res.status(400).json({ err: 'Error in deleting  Question ' });
+  } catch (error) {
+    res.sendStatus(500);
+  }
+}
+//
+async function addLike(req, res) {
+  const { q_id } = req.params;
+  try {
+    const saveResult = await addLikeDb(q_id);
+    if (saveResult.affectedRows === 1) {
+      res.status(201).json({ succes: 'Like added successfully ' });
+      return;
+    }
+    res.status(400).json({ err: 'Error in liking  Question ' });
+  } catch (error) {
+    res.sendStatus(500);
+  }
+}
+async function minusLike(req, res) {
+  const { q_id } = req.params;
+  try {
+    const saveResult = await minusLikeDb(q_id);
+    if (saveResult.affectedRows === 1) {
+      res.status(201).json({ succes: 'disliked successfully ' });
+      return;
+    }
+    res.status(400).json({ err: 'Error in disliking  Question ' });
   } catch (error) {
     res.sendStatus(500);
   }
@@ -88,4 +118,6 @@ module.exports = {
   editQuestion,
   deleteQuestion,
   getUserQuestions,
+  addLike,
+  minusLike,
 };

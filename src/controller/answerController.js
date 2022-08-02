@@ -5,9 +5,33 @@ const {
   editAnswerDb,
   deleteAnswerDb,
   getUserAnswersDb,
+  getAllUsersAnswersDb,
+  getJoinedDb,
+  addLikeDb,
+  minusLikeDb,
 } = require('../model/answerModel');
 
 // ------------------------------------------
+async function getJoined(req, res) {
+  const { q_id } = req.params;
+  try {
+    const questArr = await getJoinedDb(q_id);
+    res.json(questArr);
+  } catch (error) {
+    console.log('error in getting Answer route ===', error);
+    res.sendStatus(500);
+  }
+}
+//
+async function getAllUsersAnswers(req, res) {
+  try {
+    const questArr = await getAllUsersAnswersDb();
+    res.json(questArr);
+  } catch (error) {
+    console.log('error in getting Answer route ===', error);
+    res.sendStatus(500);
+  }
+}
 async function getAllAnswers(req, res) {
   const { q_id } = req.params;
 
@@ -67,11 +91,37 @@ async function deleteAnswer(req, res) {
 
   try {
     const saveResult = await deleteAnswerDb(a_id);
-    if (saveResult.affectedRows === 1) {
+    if (saveResult.affectedRows > 0) {
       res.status(201).json({ succes: 'Answer successfully deleted' });
       return;
     }
     res.status(400).json({ err: 'Error in deleting  Answer ' });
+  } catch (error) {
+    res.sendStatus(500);
+  }
+}
+async function addLike(req, res) {
+  const { a_id } = req.params;
+  try {
+    const saveResult = await addLikeDb(a_id);
+    if (saveResult.affectedRows === 1) {
+      res.status(201).json({ succes: 'Like added successfully ' });
+      return;
+    }
+    res.status(400).json({ err: 'Error in liking  Question ' });
+  } catch (error) {
+    res.sendStatus(500);
+  }
+}
+async function minusLike(req, res) {
+  const { a_id } = req.params;
+  try {
+    const saveResult = await minusLikeDb(a_id);
+    if (saveResult.affectedRows === 1) {
+      res.status(201).json({ succes: 'disliked successfully ' });
+      return;
+    }
+    res.status(400).json({ err: 'Error in disliking  Question ' });
   } catch (error) {
     res.sendStatus(500);
   }
@@ -83,4 +133,8 @@ module.exports = {
   editAnswer,
   deleteAnswer,
   getUserAnswers,
+  getAllUsersAnswers,
+  getJoined,
+  addLike,
+  minusLike,
 };

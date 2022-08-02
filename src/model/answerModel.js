@@ -6,6 +6,16 @@ const { executeDb } = require('../utils/helper');
 // `SELECT * FROM atsakymai AND klausimai LEFT JOIN atsakymai ON atsakymai.q_id = klausimai.q_id WHERE atsakymai.q_id = ${q_id} ORDER BY  klausimai.q_id`
 
 // --------------------------
+function getJoinedDb(q_id) {
+  const sql = `SELECT * FROM klausimai LEFT JOIN atsakymai ON atsakymai.q_id = klausimai.q_id WHERE atsakymai.q_id = ${q_id}`;
+  return executeDb(sql, []);
+}
+
+// ===============================================
+function getAllUsersAnswersDb() {
+  const sql = 'SELECT * FROM atsakymai';
+  return executeDb(sql, []);
+}
 function getAllAnswersDb(q_id) {
   const sql = `SELECT * FROM atsakymai JOIN klausimai ON klausimai.q_id = atsakymai.q_id WHERE atsakymai.q_id = ${q_id} `;
   return executeDb(sql, []);
@@ -30,10 +40,27 @@ function deleteAnswerDb(a_id) {
   const sql = `UPDATE atsakymai SET archivedA = 1 WHERE atsakymai.a_id = ${a_id} `;
   return executeDb(sql, []);
 }
+
+function addLikeDb(a_id) {
+  const sql = `UPDATE atsakymai SET atsakymai.a_likes = a_likes+1 WHERE  atsakymai.a_id = ${a_id}`;
+  console.log('sql', sql);
+
+  return executeDb(sql, []);
+}
+function minusLikeDb(a_id) {
+  const sql = `UPDATE atsakymai SET atsakymai.a_likes = a_likes-1 WHERE  atsakymai.a_id = ${a_id}`;
+  console.log('sql', sql);
+
+  return executeDb(sql, []);
+}
 module.exports = {
   getAllAnswersDb,
   postAnswerDb,
   editAnswerDb,
   deleteAnswerDb,
   getUserAnswersDb,
+  getAllUsersAnswersDb,
+  getJoinedDb,
+  addLikeDb,
+  minusLikeDb,
 };

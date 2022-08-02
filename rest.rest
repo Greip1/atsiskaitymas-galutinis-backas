@@ -46,12 +46,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTkyMDMwN
 {
 "question": "Puppy bathing ed"
 }
+### add like
+###
+PATCH http://localhost:3001/questions/addLike/1
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTkzNjkwNDMsImV4cCI6MTY1OTM3NjI0M30.f0Q4V5NjLt9COnKGvm7Re08UhQRw8JQ2quA8VJYg_og
 
 
 ###
-DELETE http://localhost:3001/questions/5
+DELETE http://localhost:3001/questions/3
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg4NTQ1MjEsImV4cCI6MTY1ODg2MTcyMX0.Cn2yyIdbNgk2C4TYHQFjFV0BTvvkzuMC8ODJq07jx9E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTkzODAxNTcsImV4cCI6MTY1OTM4NzM1N30.JEETD7EXaDKSu9fJMYTuUr_JkwzMhgTDdqiYLfbgwac
 
 
 ###
@@ -63,19 +68,25 @@ GET http://localhost:3001/questions/user/2
 
 ### ANSWERS
 ###
-POST http://localhost:3001/questions/1/answers 
+POST http://localhost:3001/questions/2/answers 
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MTU2NTMsImV4cCI6MTY1ODkyMjg1M30.wVkUp1fzmxwKrK3yad-I2Hf991-ISy2aNSh7HXDhOsY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTkzNTYwNDUsImV4cCI6MTY1OTM2MzI0NX0.1iYUnGsQtJyGUY8FcerIzRxHQ9eGpxLsglIlXeWHoH4
 
 
 {
 "user_id": "2",
-"answer": "from 4 weeks"
+"answer": "RAW"
 }
 ###
 ###
 GET http://localhost:3001/questions/1/answers
 
+
+###
+GET http://localhost:3001/answers/joined/5
+
+###
+GET http://localhost:3001/answersAll
 
 ###
 GET http://localhost:3001/answers/user/2
@@ -90,6 +101,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTg5MTU2N
 
 "answer": "or maybe 5w edited"
 }
+###
+PATCH http://localhost:3001/answers/addLike/1
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTk0NTk4MjYsImV4cCI6MTY1OTQ2NzAyNn0.pP46XaScNVPZasVbdXF8RiDLNEO98cgT7TQmqSwf19g
+
 
 
 ###

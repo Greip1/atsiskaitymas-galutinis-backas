@@ -1,7 +1,12 @@
-POST /questions
-PATCH /questions/:id
-DELETE /questions/:id
-GET /questions/:id/answers
-POST /questions/:id/answers
-PATCH /answers/:id
-DELETE /answers/:id
+# Back-end dalis (galutinis atsiskaitymo darbas)
+
+# Paleidimas
+
+`npm i`🚀
+`npm start`🚀
+
+Ši sistema susidarys iš 2 dalių:
+duomenų bazės,
+serverio (back-end).
+
+Duomenų bazės pavyzdinis sql pridedamas **db.sql** faile.
